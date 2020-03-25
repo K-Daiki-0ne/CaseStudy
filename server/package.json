@@ -2,6 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc -p ."
+  },
   "author": "K_Daiki",
   "license": "MIT",
   "devDependencies": {
@@ -11,6 +16,7 @@
   },
   "dependencies": {
     "@types/node": "^12.12.31",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
   }
 }
