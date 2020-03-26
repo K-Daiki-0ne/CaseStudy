@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+const Model = mongoose.model
 
 const StudyContentSchema = new Schema({
   title: {
@@ -16,4 +17,4 @@ const StudyContentSchema = new Schema({
   }
 })
 
-export const StudyContent = mongoose.model('StudyContent', StudyContentSchema)
+export const StudyContent = Model('StudyContent', StudyContentSchema)
