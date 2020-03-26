@@ -1,4 +1,4 @@
-import './config/index';
+import './config/db';
 import express from 'express';
 import bodyParser from 'body-parser';
 
