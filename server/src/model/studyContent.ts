@@ -1,8 +1,19 @@
 import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-export const studyContent = mongoose.model('PostMessage', {
-  // Study title
-  title: { type: String },
-  // Study detail
-  message: { type: String }
-});
+const StudyContentSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  detail: {
+    type: String,
+    required: true
+  },
+  data: {
+    type: Date,
+    default: Date.now
+  }
+})
+
+export const StudyContent = mongoose.model('StudyContent', StudyContentSchema)
