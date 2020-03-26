@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const message = mongoose.model('PostMessage', {
+export const studyContent = mongoose.model('PostMessage', {
   // Study title
   title: { type: String },
   // Study detail
