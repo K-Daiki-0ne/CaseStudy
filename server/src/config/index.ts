@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-mongoose.connect('mongodb://127.0.0.1:27017/caseStudy', { useNewUrlParser: true, useUnifiedTopology: true }, 
+dotenv.config()
+
+const url: string = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/caseStudy';
+
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, 
   err => {
     if (!err) {
       console.log('mongoDB connection success!');
