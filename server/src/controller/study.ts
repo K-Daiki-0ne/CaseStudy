@@ -1,5 +1,5 @@
 import express from 'express';
-import { StudyContent } from '../model/studyContent';
+import { StudyContent } from '../model/StudyContent';
 import mongoose from 'mongoose';
 
 const objId = mongoose.Types.ObjectId;
