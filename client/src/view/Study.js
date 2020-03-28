@@ -1,7 +1,7 @@
 import React from 'react';
 import { StudyComponent } from '../components/StudyComponent';
 import { Provider } from 'react-redux';
-import { store } from '../state/actions/store';
+import { store } from '../store/actions/store';
 
 export const Study = () => {
   return (
