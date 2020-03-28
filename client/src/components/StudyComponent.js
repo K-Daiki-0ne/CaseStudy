@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const StudyComponent = () => {
+export const StudyComponent = (props) => {
   return (
-    <p>Hello World</p>
+    <div>From CaseStudy</div>
   )
 }
