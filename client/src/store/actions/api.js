@@ -3,7 +3,7 @@ import axios from 'axios';
 const END_POINT = 'localhost:4000/';
 
 export default {
-  postStudy() {
+  studyApi() {
     return {
       fetchAll: () => axios.get(END_POINT),
       fetchbyId: id => axios.get(`${END_POINT}${id}`),
