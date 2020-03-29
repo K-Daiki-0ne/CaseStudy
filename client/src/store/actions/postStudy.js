@@ -6,7 +6,7 @@ export const ACTION_TYPES = {
 };
 
 export const fetchAll = () => dispatch => {
-  // get user's data
+  // get user's all data
   dispatch({
     type: ACTION_TYPES.FETCH_ALL,
     payload: []
