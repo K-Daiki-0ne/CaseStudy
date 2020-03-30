@@ -1,3 +1,5 @@
+import api from './api';
+
 export const ACTION_TYPES = {
   CREATE:     'CREATE',
   UPDATE:     'UPDATE',
@@ -6,9 +8,13 @@ export const ACTION_TYPES = {
 };
 
 export const fetchAll = () => dispatch => {
-  // get user's data
-  dispatch({
-    type: ACTION_TYPES.FETCH_ALL,
-    payload: []
-  })
-}
+  // get user's all data
+  api.studyApi().fetchAll()
+    .then(res => {
+      dispatch({
+        type: ACTION_TYPES.FETCH_ALL,
+        payload: res.data
+      })
+    })
+    .catch(err => console.error(err))
+};

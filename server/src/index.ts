@@ -8,6 +8,6 @@ const port: number = 4000;
 const app: any = express()
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use('/', router);
 app.listen(port, () => console.log(`Server listing on ${port}`));
