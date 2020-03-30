@@ -6,26 +6,35 @@ import * as actions from '../store/actions/postStudy';
 import { Grid } from '@material-ui/core';
 import { Paper } from '@material-ui/core';
 import { withStyles } from '@material-ui/core';
+import { List } from '@material-ui/core';
 
-const StudyComponent = (props) => {
+const StudyComponent = ({ classes, ...props }) => {
   // const [, setstate] = useState(initialState)
 
   useEffect(() => {
     props.fetchAllPostStudy()
   }, []);
 
+  const AllStudy = props.postStudylist.map((contents, index) => {
+    console.log(index)
+    return (
+      // <StudyContent key={index} studyContent={contents} />
+      <p key={index}>Hello World</p>
+    )
+  })
+
   return (
     <Grid container>
       <Grid item xs={5}>
-        <Paper>
+        <Paper className={classes.paper}>
           <StudyForm />
         </Paper>
       </Grid>
       <Grid item xs={7}>
-        <Paper>
-          <div>
-            list of post
-          </div>
+        <Paper className={classes.paper}>
+          <List>
+            {AllStudy}
+          </List>
         </Paper>
       </Grid>
     </Grid>
