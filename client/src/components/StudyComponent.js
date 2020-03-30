@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { StudyForm } from './StudyForm/StudyForm';
+import { styles } from './styles';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/postStudy';
 import { Grid } from '@material-ui/core';
 import { Paper } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 const StudyComponent = (props) => {
   // const [, setstate] = useState(initialState)
@@ -38,4 +40,4 @@ const mapActionProps = {
   fetchAllPostStudy: actions.fetchAll
 }
 
-export default connect(mapStateProps, mapActionProps)(StudyComponent);
+export default connect(mapStateProps, mapActionProps)(withStyles(styles)(StudyComponent));
