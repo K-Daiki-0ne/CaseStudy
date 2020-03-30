@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { StudyForm } from './StudyForm/StudyForm';
+import { StudyContent } from './StudyContent/StudyContent';
 import { styles } from './styles';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/postStudy';
@@ -9,17 +10,14 @@ import { withStyles } from '@material-ui/core';
 import { List } from '@material-ui/core';
 
 const StudyComponent = ({ classes, ...props }) => {
-  // const [, setstate] = useState(initialState)
 
   useEffect(() => {
     props.fetchAllPostStudy()
   }, []);
 
   const AllStudy = props.postStudylist.map((contents, index) => {
-    console.log(index)
     return (
-      // <StudyContent key={index} studyContent={contents} />
-      <p key={index}>Hello World</p>
+      <StudyContent key={index} studies={contents} />
     )
   })
 
