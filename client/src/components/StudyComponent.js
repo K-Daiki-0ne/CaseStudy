@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/postStudy';
 
 const StudyComponent = (props) => {
+  // const [, setstate] = useState(initialState)
+
+  useEffect(() => {
+    props.fetchAllPostStudy()
+  }, [])
   return (
     <div>From CaseStudy</div>
   )
 }
 
-export default connect()StudyComponent();
+const mapStateProps = state => ({
+  postStudylist: state.postStudy.list
+})
+
+const mapActionProps = {
+  fetchAllPostStudy: actions.fetchAll
+}
+
+export default connect(mapStateProps, mapActionProps)(StudyComponent);

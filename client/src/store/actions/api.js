@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const END_POINT = 'localhost:4000/';
+const END_POINT = 'http://localhost:4000/';
 
 export default {
   studyApi() {
