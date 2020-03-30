@@ -1,12 +1,13 @@
 import React from 'react';
-import { StudyComponent } from '../components/StudyComponent';
-import { Provider } from 'react-redux';
-import { store } from '../store/state/index';
+import StudyComponent from '../components/StudyComponent';
+import { StudyBar } from '../components/StudyBar/StudyBar';
+import { Container } from '@material-ui/core';
 
 export const Study = () => {
   return (
-    <Provider store={store}>
+    <Container maxWidth="lg">
+      <StudyBar />
       <StudyComponent />
-    </Provider>
+    </Container>
   )
 }

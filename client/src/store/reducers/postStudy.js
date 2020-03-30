@@ -3,7 +3,7 @@
  * actions/postStudy -> reducers/postStudy
  */
 
-import { ACTION_TYPE } from '../actions/postStudy';
+import { ACTION_TYPES } from '../actions/postStudy';
 
 const initialState = {
   list: []
@@ -12,15 +12,15 @@ const initialState = {
 
 export const postStudy = (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_TYPE.FETCH_ALL:
+    case ACTION_TYPES.FETCH_ALL:
         return {
           ...state,
           list: [...action.payload]
         };
-      break;
+      // break;
   
     default:
         return state;
-      break;
+      // break;
   }
 }
