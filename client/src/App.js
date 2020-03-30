@@ -6,7 +6,7 @@ import { store } from './store/state/index';
 export const App = () => {
   return (
     <Provider store={store}>
-    <Study />
+      <Study />
     </Provider>
   )
 }
