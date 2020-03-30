@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
+import { StudyForm } from './StudyForm/StudyForm';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/postStudy';
+import { Grid } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 
 const StudyComponent = (props) => {
   // const [, setstate] = useState(initialState)
@@ -10,7 +13,20 @@ const StudyComponent = (props) => {
   }, []);
 
   return (
-    <div>From CaseStudy</div>
+    <Grid container>
+      <Grid item xs={5}>
+        <Paper>
+          <StudyForm />
+        </Paper>
+      </Grid>
+      <Grid item xs={7}>
+        <Paper>
+          <div>
+            list of post
+          </div>
+        </Paper>
+      </Grid>
+    </Grid>
   )
 }
 
