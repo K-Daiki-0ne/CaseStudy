@@ -4,4 +4,9 @@ export const styles = theme => ({
       margin: theme.spacing(1)
     }
   },
+  form: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  }
 })
