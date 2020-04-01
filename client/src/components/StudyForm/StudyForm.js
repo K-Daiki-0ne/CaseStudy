@@ -8,9 +8,20 @@ const initValue = {
 }
 
 const StudyForm = ({ classes, ...props }) => {
-  const [values, setValued] = useState({});
+  const [values, setValues] = useState({});
+
+  const handleChange = e => {
+    const { naem, value } = e.target;
+    setValues({
+      ...value,
+      [name]: value
+    })
+
+  };
+
+
   return (
-    <form autoComplete='off' noValidate className={classes.root}>
+    <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`}>
       <TextField 
         name='title'  
         variant='outlined'
