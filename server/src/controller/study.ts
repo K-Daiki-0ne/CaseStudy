@@ -20,7 +20,6 @@ router.post('/', (req, res) => {
   let newStudy = new StudyContent({
     title: req.body.title,
     detail: req.body.detail,
-    data: req.body.data
   })
 
   newStudy.save((err, result) => {
@@ -39,7 +38,6 @@ router.put('/:id', (req, res) => {
     let updStudy = {
       title: req.body.title,
       detail: req.body.detail,
-      data: req.body.data
     };
     StudyContent.findByIdAndUpdate(req.params.id, { $set: updStudy }, { new: true }, (err, result) => {
       if (!err) {

@@ -11,10 +11,6 @@ const StudyContentSchema = new Schema({
     type: String,
     required: true
   },
-  date: {
-    type: Date,
-    default: Date.now
-  }
 })
 
 export const StudyContent = Model('StudyContent', StudyContentSchema)
