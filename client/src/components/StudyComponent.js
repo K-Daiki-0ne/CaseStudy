@@ -4,10 +4,12 @@ import { StudyContent } from './StudyContent/StudyContent';
 import { styles } from './styles';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/postStudy';
-import { Grid } from '@material-ui/core';
-import { Paper } from '@material-ui/core';
-import { withStyles } from '@material-ui/core';
-import { List } from '@material-ui/core';
+import { 
+  Grid, 
+  Paper, 
+  withStyles, 
+  List 
+} from '@material-ui/core';
 
 const StudyComponent = ({ classes, ...props }) => {
 
