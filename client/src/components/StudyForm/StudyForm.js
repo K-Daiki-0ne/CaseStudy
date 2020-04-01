@@ -8,17 +8,6 @@ const initValue = {
 }
 
 const StudyForm = ({ classes, ...props }) => {
-  const [values, setValues] = useState({});
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setValues({
-      ...value,
-      [name]: value
-    })
-
-  };
-
 
   return (
     <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`}>
@@ -27,7 +16,7 @@ const StudyForm = ({ classes, ...props }) => {
         variant='outlined'
         label='Study title'
         fullWidth
-        value={values.title}
+        // value={values.title}
       />
       <TextField 
         name='detail'  
@@ -36,7 +25,7 @@ const StudyForm = ({ classes, ...props }) => {
         fullWidth
         multiline
         rows={6}
-        value={values.detail}
+        // value={values.detail}
       />
     </form>
   )
