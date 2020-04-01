@@ -17,15 +17,15 @@ const StudyForm = ({ classes, ...props }) => {
         label='Study title'
         fullWidth
         value={values.title}
-        className={classes.title}
       />
       <TextField 
         name='detail'  
         variant='outlined'
         label='Study detail'
         fullWidth
+        multiline
+        rows={6}
         value={values.detail}
-        className={classes.detail}
       />
     </form>
   )
