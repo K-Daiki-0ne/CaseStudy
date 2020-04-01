@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { TextField } from '@material-ui/core';
+import { styles } from './styles';
+import { TextField, withStyles } from '@material-ui/core';
 
 const initValue = {
   title: '',
   detail: '',
 }
 
-export const StudyForm = (props) => {
+const StudyForm = (props) => {
 
   const [values, setValued] = useState({});
   return (
@@ -27,4 +28,6 @@ export const StudyForm = (props) => {
       />
     </form>
   )
-}
+};
+
+export default withStyles(styles)(StudyForm);
