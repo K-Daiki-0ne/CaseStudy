@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { styles } from './styles';
 import { TextField, withStyles } from '@material-ui/core';
+import { useForm } from '../../hook/useForm';
 
 const initValue = {
   title: '',
@@ -9,6 +10,12 @@ const initValue = {
 
 const StudyForm = ({ classes, ...props }) => {
 
+  const { 
+    values,
+    setValues,
+    handleChange
+  } = useForm(initValue)
+
   return (
     <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`}>
       <TextField 
@@ -16,7 +23,8 @@ const StudyForm = ({ classes, ...props }) => {
         variant='outlined'
         label='Study title'
         fullWidth
-        // value={values.title}
+        value={values.title}
+        onChange={handleChange}
       />
       <TextField 
         name='detail'  
@@ -25,7 +33,8 @@ const StudyForm = ({ classes, ...props }) => {
         fullWidth
         multiline
         rows={6}
-        // value={values.detail}
+        value={values.detail}
+        onChange={handleChange}
       />
     </form>
   )

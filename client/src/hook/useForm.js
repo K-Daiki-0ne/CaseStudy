@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-export const useForm = () => {
-  const [values, setValues] = useState({});
+export const useForm = initValue => {
+  const [values, setValues] = useState(initValue);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -11,5 +11,9 @@ export const useForm = () => {
     })
   };
 
-
-}
+  return {
+    values,
+    setValues,
+    handleChange
+  };
+};
