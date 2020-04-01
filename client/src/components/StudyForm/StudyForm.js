@@ -11,7 +11,7 @@ const StudyForm = ({ classes, ...props }) => {
   const [values, setValues] = useState({});
 
   const handleChange = e => {
-    const { naem, value } = e.target;
+    const { name, value } = e.target;
     setValues({
       ...value,
       [name]: value
