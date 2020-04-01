@@ -17,7 +17,7 @@ const StudyComponent = ({ classes, ...props }) => {
 
   const AllStudy = props.postStudylist.map((contents, index) => {
     return (
-      <StudyContent key={index} studies={contents} />
+      <StudyContent key={index} studies={contents} caseNumber={index}/>
     )
   })
 
