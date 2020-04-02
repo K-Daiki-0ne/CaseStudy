@@ -3,7 +3,7 @@
  * actions/postStudy -> reducers/postStudy
  */
 
-import { ACTION_TYPES } from '../actions/postStudy';
+import { ACTION_TYPES } from '../actions/types';
 
 const initialState = {
   list: []
