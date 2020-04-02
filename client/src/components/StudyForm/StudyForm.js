@@ -17,6 +17,7 @@ const StudyForm = ({ classes, ...props }) => {
   } = useForm(initValue)
 
   return (
+    <div>
     <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`}>
       <TextField 
         name='title'  
@@ -37,6 +38,9 @@ const StudyForm = ({ classes, ...props }) => {
         onChange={handleChange}
       />
     </form>
+    {/* If you want to use this app that you write your name here */}
+    <p className={classes.text}>-0ne-</p>
+    </div>
   )
 };
 

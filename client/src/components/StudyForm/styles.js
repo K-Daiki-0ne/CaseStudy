@@ -8,5 +8,12 @@ export const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center'
+  },
+  text: {
+    textAlign: 'center',
+    fontFamily: 'system-ui',
+    fontWeight: 800,
+    fontSize: 30,
+    color: '#444444'
   }
 })
