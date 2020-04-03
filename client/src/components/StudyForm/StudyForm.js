@@ -7,6 +7,7 @@ import {
   Button 
 } from '@material-ui/core';
 
+import SendIcon from '@material-ui/icons/Send';
 
 const initValue = {
   title: '',
@@ -48,7 +49,7 @@ const StudyForm = ({ classes, ...props }) => {
         size='large'
         type='submit'
       >
-        Submit
+        <SendIcon />
       </Button>
     </form>
     {/* If you want to use this app that you write your name here */}
