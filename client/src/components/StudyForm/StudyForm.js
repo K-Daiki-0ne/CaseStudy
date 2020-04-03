@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import { styles } from './styles';
-import { TextField, withStyles } from '@material-ui/core';
 import { useForm } from '../../hook/useForm';
+import { 
+  TextField, 
+  withStyles, 
+  Button 
+} from '@material-ui/core';
+
 
 const initValue = {
   title: '',
@@ -37,6 +42,14 @@ const StudyForm = ({ classes, ...props }) => {
         value={values.detail}
         onChange={handleChange}
       />
+      <Button
+        variant='contained'
+        color='primary'
+        size='large'
+        type='submit'
+      >
+        Submit
+      </Button>
     </form>
     {/* If you want to use this app that you write your name here */}
     <p className={classes.text}>-0ne-</p>
