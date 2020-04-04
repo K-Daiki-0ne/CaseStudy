@@ -9,7 +9,7 @@ export const StudyBar = () => {
         variant="h2"
         align="center"
       >
-        CaseStudy
+        -Case Study-
       </Typography>
     </AppBar>
   )

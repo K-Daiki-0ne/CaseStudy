@@ -1,11 +1,5 @@
 import api from './api';
-
-export const ACTION_TYPES = {
-  CREATE:     'CREATE',
-  UPDATE:     'UPDATE',
-  DELETE:     'DELETE',
-  FETCH_ALL:  'FETCH_ALL' 
-};
+import { ACTION_TYPES } from './types'
 
 export const fetchAll = () => dispatch => {
   // get user's all data
