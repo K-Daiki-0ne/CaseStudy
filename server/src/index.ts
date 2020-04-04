@@ -10,4 +10,8 @@ const app: Application = express()
 app.use(bodyParser.json());
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(router);
-app.listen(port, () => console.log(`Server listing on ${port}`));
+try {
+  app.listen(port, () => console.log(`Starting ...Ok`));
+} catch (error) {
+  console.log('Starting ...No');
+}
