@@ -1,66 +1,66 @@
-import express from 'express';
+import { Request, Response } from 'express';
 import { StudyContent } from '../model/StudyContent';
 import mongoose from 'mongoose';
 
 const objId = mongoose.Types.ObjectId;
 
-const router = express.Router();
-
-router.get('/', (req, res) => {
-  StudyContent.find((err, result) => {
+export const get = async (req: Request, res: Response) => {
+  await StudyContent.find((err, result) => {
     if (!err) {
-      res.send(result)
+      console.log('Send ...Ok');
+      res.send(result);
     } else {
-      console.error(`Failed to get data`);
+      console.log('Send ...No');
     }
   })
-});
+};
 
-router.post('/', (req, res) => {
+export const register = (req: Request, res: Response) => {
   let newStudy = new StudyContent({
     title: req.body.title,
-    detail: req.body.detail,
-  })
+    detail: req.body.detail
+  });
 
   newStudy.save((err, result) => {
     if(!err) {
+      console.log('Post ...Ok');
       res.send(result);
     } else {
-      console.log(`Sorry... failed to create new study`);
+      console.log('Post ...No');
     }
-  });
-});
+  })
+};
 
-router.put('/:id', (req, res) => {
-  if (!objId.isValid(req.params.id)) {
-    return res.status(400).send(`Nothing record with given id: ${req.params.id}`)
+export const update = (req: Request, res: Response) => {
+  if(!objId.isValid(req.params.id)) {
+    return res.status(400).send(`Nothing record with given id: ${req.params.id}`);
   } else {
     let updStudy = {
       title: req.body.title,
-      detail: req.body.detail,
+      detail: req.body.detail
     };
     StudyContent.findByIdAndUpdate(req.params.id, { $set: updStudy }, { new: true }, (err, result) => {
       if (!err) {
+        console.log('Update ...Ok')
         res.send(result);
       } else {
-        console.log(`Update error: ${err}`);
+        console.log(`Update ...No`);
       }
     });
   }
-});
+};
 
-router.delete('/:id', (req, res) => {
+export const remove = (req: Request, res: Response) => {
   if(!objId.isValid(req.params.id)) {
     return res.status(400).send(`No data with given id: ${req.params.id}`)
   } else {
     StudyContent.findByIdAndRemove(req.params.id, (err, result) => {
       if(!err) {
+        console.log('Delete ...Ok')
         res.send(result);
       } else {
-        console.log(`Sorry failed to delete data`);
+        console.log(`Delete ...No`);
       }
     })
   }
-});
-
-export default router
+}
