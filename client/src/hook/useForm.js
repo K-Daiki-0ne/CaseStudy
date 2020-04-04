@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useForm = initValue => {
   const [values, setValues] = useState(initValue);
+  const [err, setErr] = useState({});
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -14,6 +15,8 @@ export const useForm = initValue => {
   return {
     values,
     setValues,
+    err,
+    setErr,
     handleChange
   };
 };

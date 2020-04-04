@@ -16,15 +16,30 @@ const initValue = {
 
 const StudyForm = ({ classes, ...props }) => {
 
+  const validate = () => {
+    let temp = { ...err }
+    temp.title = values.title 
+      ? '' 
+      : 'This field is required';
+    temp.detail = values.detail 
+      ? '' 
+      : 'This field is required';
+    return Object.values(temp).every(x => x == '')
+  }
+
   const { 
     values,
     setValues,
+    err,
+    setErr,
     handleChange
   } = useForm(initValue)
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(values)
+    if(validate()) {
+      alert('Success ...ok')
+    }
   }
 
   return (
