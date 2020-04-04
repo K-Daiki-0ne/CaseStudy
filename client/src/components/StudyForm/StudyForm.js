@@ -22,9 +22,19 @@ const StudyForm = ({ classes, ...props }) => {
     handleChange
   } = useForm(initValue)
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(values)
+  }
+
   return (
     <div>
-    <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`}>
+    <form 
+      autoComplete='off' 
+      noValidate 
+      className={`${classes.root} ${classes.form}`}
+      onSubmit={handleSubmit}
+    >
       <TextField 
         name='title'  
         variant='outlined'
