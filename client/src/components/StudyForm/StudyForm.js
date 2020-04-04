@@ -39,7 +39,7 @@ const StudyForm = ({ classes, ...props }) => {
         label='Study detail'
         fullWidth
         multiline
-        rows={6}
+        rows={8}
         value={values.detail}
         onChange={handleChange}
       />
@@ -48,6 +48,7 @@ const StudyForm = ({ classes, ...props }) => {
         color='primary'
         size='large'
         type='submit'
+        className={classes.button}
       >
         <SendIcon />
       </Button>

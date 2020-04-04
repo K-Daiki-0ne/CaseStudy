@@ -9,6 +9,10 @@ export const styles = theme => ({
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
+  button: {
+    width: '25%',
+    margin: theme.spacing(2)
+  },
   text: {
     textAlign: 'center',
     fontFamily: 'system-ui',
