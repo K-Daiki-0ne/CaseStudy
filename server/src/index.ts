@@ -7,9 +7,9 @@ import router from './controller/study';
 const port: number = 4000;
 const app: Application = express()
 
-const cliUrl: string = 'http://localhost:3000'
+const clientUrl: string = 'http://localhost:3000'
 
 app.use(bodyParser.json());
-app.use(cors({ origin: cliUrl }));
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use('/', router);
 app.listen(port, () => console.log(`Server listing on ${port}`));
