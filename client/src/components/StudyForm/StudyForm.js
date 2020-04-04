@@ -38,7 +38,9 @@ const StudyForm = ({ classes, ...props }) => {
   const handleSubmit = e => {
     e.preventDefault()
     if(validate()) {
-      alert('Success ...ok')
+      alert('Send ...Ok')
+    } else {
+      alert('Send ...No')
     }
   }
 
