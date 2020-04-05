@@ -13,14 +13,17 @@ const initialState = {
 export const postStudy = (state = initialState, action) => {
   switch (action.type) {
     case ACTION_TYPES.FETCH_ALL:
-        return {
-          ...state,
-          list: [...action.payload]
-        };
-      // break;
+      return {
+        ...state,
+        list: [...action.payload]
+      };
+    case ACTION_TYPES.CREATE:
+      return {
+        ...state,
+        list: [...state.list, action.payload]
+      };
   
     default:
         return state;
-      // break;
-  }
-}
+  };
+};
