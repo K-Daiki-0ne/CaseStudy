@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { styles } from './styles';
 import { useForm } from '../../hook/useForm';
+import * as actions from '../../store/actions/postStudy';
+import { connect } from 'react-redux';
 import { 
   TextField, 
   withStyles, 
@@ -41,8 +43,11 @@ const StudyForm = ({ classes, ...props }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
+    const onSuccess = () => {
+      alert('Submit ... Ok');
+    }
     if(validate()) {
-      alert('Send ...Ok')
+      props.createStudy(values, onSuccess);
     } else {
       alert('Send ...No')
     }
@@ -91,5 +96,14 @@ const StudyForm = ({ classes, ...props }) => {
     </div>
   )
 };
+const mapStateProps = state => ({
+  postStudylist: state.postStudy.list
+})
 
-export default withStyles(styles)(StudyForm);
+const mapActionProps = {
+  createStudy: actions.create,
+  updateStudy: actions.update
+}
+
+
+export default connect(mapStateProps, mapActionProps)(withStyles(styles)(StudyForm));

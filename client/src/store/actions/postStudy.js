@@ -16,7 +16,7 @@ export const fetchAll = () => dispatch => {
 };
 
 export const create = (data, onSuccess) => dispatch => {
-  api.studyApi().creeate(data)
+  api.studyApi().create(data)
     .then(res => {
       dispatch({
         type: ACTION_TYPES.CREATE,
