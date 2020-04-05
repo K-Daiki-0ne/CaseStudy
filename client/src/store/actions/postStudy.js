@@ -9,8 +9,8 @@ export const fetchAll = () => dispatch => {
         type: ACTION_TYPES.FETCH_ALL,
         payload: res.data
       })
-    })
-    .catch(err => console.error(err))
+    });
+    .catch(err => console.error(err));
 };
 
 export const create = (data, onSuccess) => dispatch => {
@@ -20,6 +20,19 @@ export const create = (data, onSuccess) => dispatch => {
         type: ACTION_TYPES.CREATE,
         payload: res.data
       });
+      onSuccess()
     });
     .catch(err => console.log('Action create ...Error'));
+};
+
+export const update = (id, data, onSuccess) => dispatch => {
+  api.studyApi().update(id, data)
+    .then(res => {
+      dispatch({
+        type: ACTION_TYPES.UPDATE,
+        payload: res.data
+      })
+      onSuccess()
+    });
+    .catch(err => console.log('Action update ...Error'));
 };
