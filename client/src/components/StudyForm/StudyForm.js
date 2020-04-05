@@ -9,12 +9,12 @@ import {
 
 import SendIcon from '@material-ui/icons/Send';
 
-const initValue = {
-  title: '',
-  detail: '',
-}
-
 const StudyForm = ({ classes, ...props }) => {
+  
+  const initValue = {
+    title: '',
+    detail: '',
+  };
 
   const validate = () => {
     let temp = { ...err }
@@ -24,7 +24,11 @@ const StudyForm = ({ classes, ...props }) => {
     temp.detail = values.detail 
       ? '' 
       : 'This field is required';
-    return Object.values(temp).every(x => x == '')
+
+    setErr({
+      ...temp
+    })
+    return Object.values(temp).every(x => x === '')
   }
 
   const { 
@@ -59,6 +63,7 @@ const StudyForm = ({ classes, ...props }) => {
         fullWidth
         value={values.title}
         onChange={handleChange}
+        {...(err.title && { err:true, helperText: err.title })}
       />
       <TextField 
         name='detail'  
@@ -69,6 +74,7 @@ const StudyForm = ({ classes, ...props }) => {
         rows={8}
         value={values.detail}
         onChange={handleChange}
+        {...(err.detail && { err:true, helperText: err.detail })}
       />
       <Button
         variant='contained'
