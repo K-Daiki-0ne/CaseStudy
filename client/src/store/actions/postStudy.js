@@ -12,3 +12,14 @@ export const fetchAll = () => dispatch => {
     })
     .catch(err => console.error(err))
 };
+
+export const create = (data, onSuccess) => dispatch => {
+  api.studyApi().creeate(data)
+    .then(res => {
+      dispatch({
+        type: ACTION_TYPES.CREATE,
+        payload: res.data
+      });
+    });
+    .catch(err => console.log('Action create ...Error'));
+};
