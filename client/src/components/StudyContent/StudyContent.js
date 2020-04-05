@@ -3,8 +3,11 @@ import {
   ListItem, 
   ListItemText,
   Typography,
-  Divider
+  Divider,
+  Button
 } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export const StudyContent = ({ studies, caseNumber }) => {
   
@@ -16,6 +19,20 @@ export const StudyContent = ({ studies, caseNumber }) => {
             Case{caseNumber + 1}: {studies.title}
           </Typography>
           <p>{studies.detail}</p>
+          <Button
+            varient='contained'
+            color='primary'
+            size='small'
+          >
+            <EditIcon />
+          </Button>
+          <Button
+            varient='contained'
+            color='secondary'
+            size='small'
+          >
+            <DeleteIcon />
+          </Button>
         </ListItemText>
       </ListItem>
       <Divider component='li' />
