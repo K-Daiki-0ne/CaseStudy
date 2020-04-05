@@ -13,11 +13,28 @@ import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import ButterToast, { Cinnamon } from 'butter-toast';
 
 const StudyForm = ({ classes, ...props }) => {
-  
+
   const initValue = {
     title: '',
     detail: '',
   };
+
+  const { 
+    values,
+    setValues,
+    err,
+    setErr,
+    handleChange
+  } = useForm(initValue)
+
+  useEffect(() => {
+    console.log(props.currentId)
+    if(props.currentId !== 0) {
+      setValues({
+        ...props.postStudylist.find(x => x._id == props.currentId)
+      })
+    }
+  }, [props.currentId]);
 
   const validate = () => {
     let temp = { ...err }
@@ -34,14 +51,6 @@ const StudyForm = ({ classes, ...props }) => {
     return Object.values(temp).every(x => x === '')
   }
 
-  const { 
-    values,
-    setValues,
-    err,
-    setErr,
-    handleChange
-  } = useForm(initValue)
-
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -57,7 +66,12 @@ const StudyForm = ({ classes, ...props }) => {
     }
 
     if(validate()) {
-      props.createStudy(values, onSuccess);
+      if(props.currentId === 0) {
+        props.createStudy(values, onSuccess);
+      } else {
+        console.log(values)
+        props.updateStudy(props.currentId, values, onSuccess)
+      }
     } else {
       alert('Send ...No')
     }

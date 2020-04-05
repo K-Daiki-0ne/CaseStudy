@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import StudyForm from '../StudyForm/StudyForm';
-// import StudyContent from './StudyContent/StudyContent';
 import { styles } from './styles';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/postStudy';
@@ -20,22 +19,17 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const StudyComponent = ({ classes, ...props }) => {
-
+  const [currentId, setCurrentId] = useState(0);
   useEffect(() => {
+    console.log('Hello')
     props.fetchAllPostStudy()
   }, []);
-
-  // const AllStudy = props.postStudylist.map((contents, index) => {
-  //   return (
-  //     <StudyContent key={index} studies={contents} caseNumber={index}/>
-  //   )
-  // })
 
   return (
     <Grid container>
       <Grid item xs={5}>
         <Paper className={classes.paper}>
-          <StudyForm />
+          <StudyForm {...{currentId, setCurrentId}} />
         </Paper>
       </Grid>
       <Grid item xs={7}>
@@ -44,7 +38,7 @@ const StudyComponent = ({ classes, ...props }) => {
             {
               props.postStudylist.map((studies, index) => {
                 return (
-                  <>
+                  <React.Fragment key={index}>
                     <ListItem>
                       <ListItemText>
                         <Typography variant='h5'>
@@ -56,6 +50,7 @@ const StudyComponent = ({ classes, ...props }) => {
                             varient='contained'
                             color='primary'
                             size='small'
+                            onClick={() => setCurrentId(studies._id)}
                           >
                             <EditIcon />
                           </Button>
@@ -71,7 +66,7 @@ const StudyComponent = ({ classes, ...props }) => {
                       </ListItemText>
                     </ListItem>
                     <Divider component='li' />
-                  </>
+                  </React.Fragment>
                 )
               })
             }
