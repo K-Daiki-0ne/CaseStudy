@@ -9,8 +9,10 @@ export const fetchAll = () => dispatch => {
         type: ACTION_TYPES.FETCH_ALL,
         payload: res.data
       })
-    });
-    .catch(err => console.error(err));
+    })
+    .catch(err => console.log(err))
+
+    // .catch(err => console.log('Action fetchAll ...Error'));
 };
 
 export const create = (data, onSuccess) => dispatch => {
@@ -19,10 +21,11 @@ export const create = (data, onSuccess) => dispatch => {
       dispatch({
         type: ACTION_TYPES.CREATE,
         payload: res.data
-      });
+      })
       onSuccess()
     });
-    .catch(err => console.log('Action create ...Error'));
+
+    // .catch(err => console.log('Action create ...Error'));
 };
 
 export const update = (id, data, onSuccess) => dispatch => {
@@ -34,10 +37,10 @@ export const update = (id, data, onSuccess) => dispatch => {
       })
       onSuccess()
     });
-    .catch(err => console.log('Action update ...Error'));
+    // .catch(err => console.log('Action update ...Error'));
 };
 
-eport const remove = (id, onSuccess) => dispatch => {
+export const remove = (id, onSuccess) => dispatch => {
   api.studyApi().delete(id)
     .then(res => {
       dispatch({
@@ -46,5 +49,5 @@ eport const remove = (id, onSuccess) => dispatch => {
       })
       onSuccess()
     });
-    .catch(err => console.log('Aciton remove ...Error'));
+    // .catch(err => console.log('Aciton remove ...Error'));
 };
