@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import StudyForm from './StudyForm/StudyForm';
-import { StudyContent } from './StudyContent/StudyContent';
+import StudyContent from './StudyContent/StudyContent';
 import { styles } from './styles';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/postStudy';

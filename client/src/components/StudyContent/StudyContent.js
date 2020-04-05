@@ -9,7 +9,7 @@ import {
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-export const StudyContent = ({ studies, caseNumber }) => {
+const StudyContent = ({ studies, caseNumber }) => {
   
   return (
     <>
@@ -38,4 +38,6 @@ export const StudyContent = ({ studies, caseNumber }) => {
       <Divider component='li' />
     </>
   )
-}
+};
+
+export default StudyContent
