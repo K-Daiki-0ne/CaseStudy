@@ -36,3 +36,15 @@ export const update = (id, data, onSuccess) => dispatch => {
     });
     .catch(err => console.log('Action update ...Error'));
 };
+
+eport const remove = (id, onSuccess) => dispatch => {
+  api.studyApi().delete(id)
+    .then(res => {
+      dispatch({
+        type: ACTION_TYPES.DELETE,
+        payload: id
+      })
+      onSuccess()
+    });
+    .catch(err => console.log('Aciton remove ...Error'));
+};
