@@ -8,8 +8,9 @@ import {
   withStyles, 
   Button 
 } from '@material-ui/core';
-
 import SendIcon from '@material-ui/icons/Send';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import ButterToast, { Cinnamon } from 'butter-toast';
 
 const StudyForm = ({ classes, ...props }) => {
   
@@ -42,10 +43,19 @@ const StudyForm = ({ classes, ...props }) => {
   } = useForm(initValue)
 
   const handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
+
     const onSuccess = () => {
-      alert('Submit ... Ok');
+      ButterToast.raise({
+        content: <Cinnamon.Crisp 
+          title='New Study'
+          content='Submit ... OK'
+          scheme={Cinnamon.Crisp.SCHEME_BLUE}
+          icon={<AssignmentTurnedInIcon />}
+        />
+      })
     }
+
     if(validate()) {
       props.createStudy(values, onSuccess);
     } else {
