@@ -1,20 +1,41 @@
 import React, { useEffect } from 'react';
 import { styles } from './styles';
 import { useForm } from '../../hook/useForm';
+import * as actions from '../../store/actions/postStudy';
+import { connect } from 'react-redux';
 import { 
   TextField, 
   withStyles, 
   Button 
 } from '@material-ui/core';
-
 import SendIcon from '@material-ui/icons/Send';
-
-const initValue = {
-  title: '',
-  detail: '',
-}
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import ButterToast, { Cinnamon } from 'butter-toast';
 
 const StudyForm = ({ classes, ...props }) => {
+
+  const initValue = {
+    title: '',
+    detail: '',
+  };
+
+  const { 
+    values,
+    setValues,
+    err,
+    setErr,
+    handleChange,
+    resetForm
+  } = useForm(initValue, props.setCurrentId)
+
+  useEffect(() => {
+    if(props.currentId !== 0) {
+      setValues({
+        ...props.postStudylist.find(x => x._id === props.currentId)
+      })
+      setErr({})
+    }
+  }, [props.currentId]);
 
   const validate = () => {
     let temp = { ...err }
@@ -24,24 +45,35 @@ const StudyForm = ({ classes, ...props }) => {
     temp.detail = values.detail 
       ? '' 
       : 'This field is required';
-    return Object.values(temp).every(x => x == '')
+
+    setErr({
+      ...temp
+    })
+    return Object.values(temp).every(x => x === '')
   }
 
-  const { 
-    values,
-    setValues,
-    err,
-    setErr,
-    handleChange
-  } = useForm(initValue)
-
   const handleSubmit = e => {
-    e.preventDefault()
-    if(validate()) {
-      alert('Send ...Ok')
-    } else {
-      alert('Send ...No')
+    e.preventDefault();
+
+    const onSuccess = () => {
+      ButterToast.raise({
+        content: <Cinnamon.Crisp 
+          title='New Study'
+          content='Submit ... OK'
+          scheme={Cinnamon.Crisp.SCHEME_BLUE}
+          icon={<AssignmentTurnedInIcon />}
+        />
+      })
+      resetForm()
     }
+
+    if(validate()) {
+      if(props.currentId === 0) {
+        props.createStudy(values, onSuccess);
+      } else {
+        props.updateStudy(props.currentId, values, onSuccess)
+      }
+    } 
   }
 
   return (
@@ -59,6 +91,7 @@ const StudyForm = ({ classes, ...props }) => {
         fullWidth
         value={values.title}
         onChange={handleChange}
+        {...(err.title && { err:true, helperText: err.title })}
       />
       <TextField 
         name='detail'  
@@ -69,6 +102,7 @@ const StudyForm = ({ classes, ...props }) => {
         rows={8}
         value={values.detail}
         onChange={handleChange}
+        {...(err.detail && { err:true, helperText: err.detail })}
       />
       <Button
         variant='contained'
@@ -85,5 +119,14 @@ const StudyForm = ({ classes, ...props }) => {
     </div>
   )
 };
+const mapStateProps = state => ({
+  postStudylist: state.postStudy.list
+})
 
-export default withStyles(styles)(StudyForm);
+const mapActionProps = {
+  createStudy: actions.create,
+  updateStudy: actions.update
+}
+
+
+export default connect(mapStateProps, mapActionProps)(withStyles(styles)(StudyForm));

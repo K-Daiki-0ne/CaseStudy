@@ -34,20 +34,20 @@ export const register = (req: Request, res: Response) => {
 export const update = (req: Request, res: Response) => {
   if(!objId.isValid(req.params.id)) {
     return res.status(400).send(`Nothing record with given id: ${req.params.id}`);
-  } else {
-    let updStudy = {
-      title: req.body.title,
-      detail: req.body.detail
-    };
-    StudyContent.findByIdAndUpdate(req.params.id, { $set: updStudy }, { new: true }, (err, result) => {
-      if (!err) {
-        console.log('Update ...Ok')
-        res.send(result);
-      } else {
-        console.log(`Update ...No`);
-      }
-    });
-  }
+  } 
+  let updStudy = {
+    title: req.body.title,
+    detail: req.body.detail
+  };
+  StudyContent.findByIdAndUpdate(req.params.id, { $set: updStudy }, { new: true }, (err, result) => {
+    if (!err) {
+      console.log('Update ...Ok')
+      res.send(result);
+    } else {
+      console.log(`Update ...No`);
+    }
+  });
+  
 };
 
 export const remove = (req: Request, res: Response) => {
