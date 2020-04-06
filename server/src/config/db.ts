@@ -5,12 +5,12 @@ dotenv.config()
 
 const url: string = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/caseStudy';
 
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, 
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, 
   err => {
     if (!err) {
-      console.log('mongoDB connection success!');
+      console.log('DB connection ...Ok');
     } else {
-      console.log('Failed to connection mongoDB' + JSON.stringify(err, undefined, 2));
+      console.log('DB connection ...No');
     }
   }
 )

@@ -3,6 +3,7 @@
 body {
   margin: 0;
   font-family: 'Comic Neue', cursive;
+  background-color: #EEEEEE;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
