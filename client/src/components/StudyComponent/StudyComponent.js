@@ -20,8 +20,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const StudyComponent = ({ classes, ...props }) => {
   const [currentId, setCurrentId] = useState(0);
+
   useEffect(() => {
-    console.log('Hello')
     props.fetchAllPostStudy()
   }, []);
 

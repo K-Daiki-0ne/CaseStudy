@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-export const useForm = initValue => {
+export const useForm = (initValue, setCurrentId) => {
   const [values, setValues] = useState(initValue);
   const [err, setErr] = useState({});
 
@@ -12,11 +12,18 @@ export const useForm = initValue => {
     })
   };
 
+  const resetForm = () => {
+    setValues(initValue);
+    setErr({});
+    setCurrentId(0)
+  }
+
   return {
     values,
     setValues,
     err,
     setErr,
-    handleChange
+    handleChange,
+    resetForm
   };
 };

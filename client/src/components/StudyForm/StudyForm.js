@@ -24,15 +24,16 @@ const StudyForm = ({ classes, ...props }) => {
     setValues,
     err,
     setErr,
-    handleChange
-  } = useForm(initValue)
+    handleChange,
+    resetForm
+  } = useForm(initValue, props.setCurrentId)
 
   useEffect(() => {
-    console.log(props.currentId)
     if(props.currentId !== 0) {
       setValues({
-        ...props.postStudylist.find(x => x._id == props.currentId)
+        ...props.postStudylist.find(x => x._id === props.currentId)
       })
+      setErr({})
     }
   }, [props.currentId]);
 
@@ -63,18 +64,16 @@ const StudyForm = ({ classes, ...props }) => {
           icon={<AssignmentTurnedInIcon />}
         />
       })
+      resetForm()
     }
 
     if(validate()) {
       if(props.currentId === 0) {
         props.createStudy(values, onSuccess);
       } else {
-        console.log(values)
         props.updateStudy(props.currentId, values, onSuccess)
       }
-    } else {
-      alert('Send ...No')
-    }
+    } 
   }
 
   return (
