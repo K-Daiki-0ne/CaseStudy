@@ -16,6 +16,9 @@ import {
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import ButterToast, { Cinnamon } from "butter-toast";
+import { DeleteSweep } from "@material-ui/icons";
+
 
 
 const StudyComponent = ({ classes, ...props }) => {
@@ -24,6 +27,21 @@ const StudyComponent = ({ classes, ...props }) => {
   useEffect(() => {
     props.fetchAllPostStudy()
   }, []);
+
+  const deleteStudy = id => {
+    const onSuccess = () => {
+      ButterToast.raise({
+          content: <Cinnamon.Crisp title="Post Box"
+              content="Deleted successfully"
+              scheme={Cinnamon.Crisp.SCHEME_BLUE}
+              icon={<DeleteSweep />}
+          />
+      })
+    }
+    if(window.confirm('Are you sure to delete this study?')) {
+      props.deleteStudy(id, onSuccess)
+    }
+  }
 
   return (
     <Grid container>
@@ -59,6 +77,7 @@ const StudyComponent = ({ classes, ...props }) => {
                             color='secondary'
                             size='small'
                             className={classes.btnMrg}
+                            onClick={() => deleteStudy(studies._id)}
                           >
                             <DeleteIcon />
                           </Button>
@@ -82,7 +101,8 @@ const mapStateProps = state => ({
 })
 
 const mapActionProps = {
-  fetchAllPostStudy: actions.fetchAll
+  fetchAllPostStudy: actions.fetchAll,
+  deleteStudy: actions.remove
 }
 
 export default connect(mapStateProps, mapActionProps)(withStyles(styles)(StudyComponent));
